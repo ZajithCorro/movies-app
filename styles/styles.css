@@ -92,6 +92,11 @@ button {
 	cursor: pointer;
 }
 
+.header-searchForm button svg {
+	width: 50%;
+	height: 50%;
+}
+
 /* Shared */
 .header-container,
 .trendingPreview-header,
