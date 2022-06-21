@@ -1,10 +1,9 @@
-import { API_KEY } from './secrets.js';
+import { api } from './axios.js';
 
 async function getTrendingMoviesPreview() {
-	const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-	const data = await res.json();
-
+	const { data } = await api(`trending/movie/day`);
 	const movies = data.results;
+
 	movies.forEach((movie) => {
 		const trendingPreviewMoviesContainer = document.querySelector(
 			'#trendingPreview .trendingPreview-movieList'
