@@ -22,4 +22,30 @@ async function getTrendingMoviesPreview() {
 	});
 }
 
+async function getCategoriesPreview() {
+	const { data } = await api('genre/movie/list');
+	const categories = data.genres;
+	const previewCategoriesContainer = document.querySelector(
+		'#categoriesPreview .categoriesPreview-list'
+	);
+
+	categories.forEach((category) => {
+		const categoryContainer = document.createElement('div');
+		const categoryColor = document.createElement('span');
+		const categoryTitle = document.createElement('p');
+		const categoryTitleText = document.createTextNode(category.name);
+		const classCategory = `category-genre-${category.id}`;
+
+		categoryContainer.classList.add('category-container');
+		categoryTitle.classList.add('category-title');
+		categoryColor.classList.add(classCategory);
+
+		categoryTitle.appendChild(categoryTitleText);
+		categoryContainer.appendChild(categoryColor);
+		categoryContainer.appendChild(categoryTitle);
+		previewCategoriesContainer.appendChild(categoryContainer);
+	});
+}
+
 getTrendingMoviesPreview();
+getCategoriesPreview();

@@ -14,10 +14,23 @@
 
 	--yellow: #eecc75;
 	--green: #cad297;
+	--greenLight: #d9e3b7;
 	--aqua: #b7eac5;
 	--lightBlue: #a2eee5;
 	--darkBlue: #8ea2ea;
 	--red: #f09d9d;
+	--gray: #e5e5e5;
+	--grayDark: #b3b3b3;
+	--pink: #f7bcbc;
+	--yellowLight: #f9e8b3;
+	--orange: #f8a083;
+	--orangeLight: #eeb882;
+	--violet: #c59aff;
+	--purple: #a890ff;
+	--coffee: #a19090;
+	--coffeeLight: #c2b6b6;
+	--blue: #5e9cec;
+	--redLight: #f6a6a6;
 
 	--font-family-titles: 'Dosis', sans-serif;
 	--font-family-text: 'Red Hat Display', sans-serif;
@@ -123,7 +136,6 @@ footer {
 	border-radius: 8px;
 }
 
-.categoriesPreview-list,
 .categories-list {
 	display: flex;
 	align-items: center;
@@ -225,84 +237,98 @@ footer {
 }
 
 /* Categories */
+.categoriesPreview-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	grid-gap: 1rem;
+	margin-top: 2rem;
+}
+
 .category-container {
-	width: 45%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.category-container:hover .category-title {
+	color: var(--purple-medium-2);
+}
+
+.category-container span {
+	display: block;
+	width: 25px;
+	height: 25px;
+	border-radius: 8px;
 }
 
 .category-title {
-	margin-bottom: 8px;
-	cursor: pointer;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	margin: 0;
 }
 
-.category-title::before {
-	content: '••••';
-	color: transparent;
-	/* TODO: cambiar color por ID de la categoría */
-	background-color: var(--idColor);
-	border-radius: 8px;
-	margin-right: 8px;
-	width: 8px;
-	height: 8px;
+/* Color genres */
+.category-genre-28 {
+	background: var(--yellow);
 }
-#id28 {
-	--idColor: var(--yellow);
+
+.category-genre-12 {
+	background: var(--green);
 }
-#id12 {
-	--idColor: var(--red);
+
+.category-genre-16 {
+	background: var(--lightBlue);
 }
-#id16 {
-	--idColor: var(--green);
+
+.category-genre-35 {
+	background: var(--darkBlue);
 }
-#id35 {
-	--idColor: var(--lightBlue);
+
+.category-genre-80 {
+	background: var(--red);
 }
-#id80 {
-	--idColor: var(--darkBlue);
+
+.category-genre-99 {
+	background: var(--aqua);
 }
-#id99 {
-	--idColor: var(--purple-dark-1);
+
+.category-genre-18 {
+	background: var(--gray);
 }
-#id18 {
-	--idColor: var(--purple-medium-1);
+.category-genre-10751 {
+	background: var(--blue);
 }
-#id10751 {
-	--idColor: var(--yellow);
+.category-genre-14 {
+	background: var(--purple);
 }
-#id14 {
-	--idColor: var(--red);
+.category-genre-36 {
+	background: var(--yellowLight);
 }
-#id36 {
-	--idColor: var(--green);
+.category-genre-27 {
+	background: var(--coffeeLight);
 }
-#id27 {
-	--idColor: var(--lightBlue);
+.category-genre-10402 {
+	background: var(--orangeLight);
 }
-#id10402 {
-	--idColor: var(--darkBlue);
+.category-genre-9648 {
+	background: var(--violet);
 }
-#id9648 {
-	--idColor: var(--purple-dark-1);
+.category-genre-10749 {
+	background: var(--pink);
 }
-#id10749 {
-	--idColor: var(--purple-medium-1);
+.category-genre-878 {
+	background: var(--coffee);
 }
-#id878 {
-	--idColor: var(--yellow);
+.category-genre-10770 {
+	background: var(--orange);
 }
-#id10770 {
-	--idColor: var(--red);
+.category-genre-53 {
+	background: var(--greenLight);
 }
-#id53 {
-	--idColor: var(--green);
+.category-genre-10752 {
+	background: var(--grayDark);
 }
-#id10752 {
-	--idColor: var(--lightBlue);
-}
-#id37 {
-	--idColor: var(--darkBlue);
+.category-genre-37 {
+	background: var(--redLight);
 }
 
 /* Generic List (search, trending & category) */
