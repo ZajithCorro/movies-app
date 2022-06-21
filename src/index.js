@@ -3,12 +3,11 @@ import { api } from './axios.js';
 async function getTrendingMoviesPreview() {
 	const { data } = await api(`trending/movie/day`);
 	const movies = data.results;
+	const trendingPreviewMoviesContainer = document.querySelector(
+		'#trendingPreview .trendingPreview-movieList'
+	);
 
 	movies.forEach((movie) => {
-		const trendingPreviewMoviesContainer = document.querySelector(
-			'#trendingPreview .trendingPreview-movieList'
-		);
-
 		const movieContainer = document.createElement('div');
 		movieContainer.classList.add('movie-container');
 
