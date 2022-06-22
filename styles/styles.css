@@ -438,8 +438,13 @@ footer {
 		place-items: center;
 		grid-gap: 15px;
 
+		padding-right: 24px;
 		overflow: hidden;
 		white-space: nowrap;
 		height: auto;
+	}
+
+	.trendingPreview-movieList .movie-container {
+		margin-right: 0;
 	}
 }
