@@ -1,4 +1,5 @@
 import { api } from './axios.js';
+import { nodes } from './nodes.js';
 
 async function getTrendingMoviesPreview() {
 	const { data } = await api(`trending/movie/day`);
@@ -47,6 +48,18 @@ async function getCategoriesPreview() {
 }
 
 export function home() {
+	nodes.headerSection.classList.remove('header-container--long');
+	nodes.headerSection.style.background = '';
+	nodes.arrowBtn.classList.add('inactive');
+	nodes.arrowBtn.classList.remove('header-arrow--white');
+	nodes.headerTitle.classList.remove('inactive');
+	nodes.headerCategoryTitle.classList.add('inactive');
+	nodes.searchForm.classList.remove('inactive');
+
+	nodes.trendingPreviewSection.classList.remove('inactive');
+	nodes.categoriesPreviewSection.classList.remove('inactive');
+	nodes.genericSection.classList.add('inactive');
+	nodes.movieDetailSection.classList.add('inactive');
 	getTrendingMoviesPreview();
 	getCategoriesPreview();
 }
