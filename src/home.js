@@ -4,9 +4,7 @@ import { nodes } from './nodes.js';
 async function getTrendingMoviesPreview() {
 	const { data } = await api(`trending/movie/day`);
 	const movies = data.results;
-	const trendingPreviewMoviesContainer = document.querySelector(
-		'#trendingPreview .trendingPreview-movieList'
-	);
+	nodes.trendingMoviesPreviewList.innerHTML = '';
 
 	movies.forEach((movie) => {
 		const movieContainer = document.createElement('div');
@@ -16,18 +14,17 @@ async function getTrendingMoviesPreview() {
 		movieImg.classList.add('movie-img');
 		movieImg.setAttribute('alt', movie.title);
 		movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + movie.poster_path);
+		movieImg.setAttribute('loading', 'lazy');
 
 		movieContainer.appendChild(movieImg);
-		trendingPreviewMoviesContainer.appendChild(movieContainer);
+		nodes.trendingMoviesPreviewList.appendChild(movieContainer);
 	});
 }
 
 async function getCategoriesPreview() {
 	const { data } = await api('genre/movie/list');
 	const categories = data.genres;
-	const previewCategoriesContainer = document.querySelector(
-		'#categoriesPreview .categoriesPreview-list'
-	);
+	nodes.categoriesPreviewList.innerHTML = '';
 
 	categories.forEach((category) => {
 		const categoryContainer = document.createElement('div');
@@ -43,7 +40,7 @@ async function getCategoriesPreview() {
 		categoryTitle.appendChild(categoryTitleText);
 		categoryContainer.appendChild(categoryColor);
 		categoryContainer.appendChild(categoryTitle);
-		previewCategoriesContainer.appendChild(categoryContainer);
+		nodes.categoriesPreviewList.appendChild(categoryContainer);
 	});
 }
 
