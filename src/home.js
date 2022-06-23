@@ -1,12 +1,12 @@
 import { api } from './axios.js';
 import { nodes } from './nodes.js';
-import { createMovie } from './utils.js';
+import { createMovies } from './utils.js';
 
 async function getTrendingMoviesPreview() {
 	const { data } = await api(`trending/movie/day`);
 	const movies = data.results;
 
-	createMovie(movies, nodes.trendingMoviesPreviewList);
+	createMovies(movies, nodes.trendingMoviesPreviewList);
 }
 
 async function getCategoriesPreview() {
@@ -37,6 +37,7 @@ async function getCategoriesPreview() {
 }
 
 export function home() {
+	nodes.searchFormInput.value = '';
 	nodes.headerSection.classList.remove('header-container--long');
 	nodes.headerSection.style.background = '';
 	nodes.arrowBtn.classList.add('inactive');

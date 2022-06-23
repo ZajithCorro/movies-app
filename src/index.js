@@ -16,7 +16,10 @@ function navigation() {
 	home();
 }
 
-nodes.searchFormBtn.addEventListener('click', () => (location.hash = '#search='));
+nodes.searchFormBtn.addEventListener('click', () => {
+	const inputValue = nodes.searchFormInput.value;
+	location.hash = `#search=${inputValue}`;
+});
 nodes.trendingBtn.addEventListener('click', () => (location.hash = '#trends'));
 nodes.arrowBtn.addEventListener('click', () => (location.hash = '#home'));
 window.addEventListener('DOMContentLoaded', navigation);

@@ -1,6 +1,6 @@
 import { nodes } from './nodes.js';
 import { api } from './axios.js';
-import { createMovie } from './utils.js';
+import { createMovies } from './utils.js';
 
 export function categories() {
 	const hash = location.hash.split('=')[1];
@@ -20,7 +20,7 @@ async function getMoviesByCategory(id) {
 	});
 
 	const movies = data.results;
-	createMovie(movies, nodes.genericSection);
+	createMovies(movies, nodes.genericSection);
 }
 
 function renderUI(categoryName) {

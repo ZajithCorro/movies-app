@@ -2,7 +2,7 @@ export function $(selector) {
 	return document.querySelector(selector);
 }
 
-export function createMovie(movies, container) {
+export function createMovies(movies, container) {
 	container.innerHTML = '';
 	movies.forEach((movie) => {
 		const movieContainer = document.createElement('div');
