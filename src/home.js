@@ -37,6 +37,10 @@ async function getCategoriesPreview() {
 		categoryTitle.classList.add('category-title');
 		categoryColor.classList.add(classCategory);
 
+		categoryContainer.addEventListener('click', () => {
+			location.hash = `#category=${category.id}&${category.name.replaceAll(' ', '-')}`;
+		});
+
 		categoryTitle.appendChild(categoryTitleText);
 		categoryContainer.appendChild(categoryColor);
 		categoryContainer.appendChild(categoryTitle);
