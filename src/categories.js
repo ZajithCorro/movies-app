@@ -1,5 +1,6 @@
 import { nodes } from './nodes.js';
 import { api } from './axios.js';
+import { createMovie } from './utils.js';
 
 export function categories() {
 	const hash = location.hash.split('=')[1];
@@ -19,21 +20,7 @@ async function getMoviesByCategory(id) {
 	});
 
 	const movies = data.results;
-	nodes.genericSection.innerHTML = '';
-
-	movies.forEach((movie) => {
-		const movieContainer = document.createElement('div');
-		movieContainer.classList.add('movie-container');
-
-		const movieImg = document.createElement('img');
-		movieImg.classList.add('movie-img');
-		movieImg.setAttribute('alt', movie.title);
-		movieImg.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + movie.poster_path);
-		movieImg.setAttribute('loading', 'lazy');
-
-		movieContainer.appendChild(movieImg);
-		nodes.genericSection.appendChild(movieContainer);
-	});
+	createMovie(movies, nodes.genericSection);
 }
 
 function renderUI(categoryName) {
