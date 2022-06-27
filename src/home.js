@@ -1,6 +1,6 @@
 import { api } from './axios.js';
 import { nodes } from './nodes.js';
-import { createMovies } from './utils.js';
+import { createCategories, createMovies } from './utils.js';
 
 async function getTrendingMoviesPreview() {
 	const { data } = await api(`trending/movie/day`);
@@ -12,28 +12,7 @@ async function getTrendingMoviesPreview() {
 async function getCategoriesPreview() {
 	const { data } = await api('genre/movie/list');
 	const categories = data.genres;
-	nodes.categoriesPreviewList.innerHTML = '';
-
-	categories.forEach((category) => {
-		const categoryContainer = document.createElement('div');
-		const categoryColor = document.createElement('span');
-		const categoryTitle = document.createElement('p');
-		const categoryTitleText = document.createTextNode(category.name);
-		const classCategory = `category-genre-${category.id}`;
-
-		categoryContainer.classList.add('category-container');
-		categoryTitle.classList.add('category-title');
-		categoryColor.classList.add(classCategory);
-
-		categoryContainer.addEventListener('click', () => {
-			location.hash = `#category=${category.id}&${category.name.replaceAll(' ', '-')}`;
-		});
-
-		categoryTitle.appendChild(categoryTitleText);
-		categoryContainer.appendChild(categoryColor);
-		categoryContainer.appendChild(categoryTitle);
-		nodes.categoriesPreviewList.appendChild(categoryContainer);
-	});
+	createCategories(categories, nodes.categoriesPreviewList);
 }
 
 export function home() {
