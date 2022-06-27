@@ -1,6 +1,6 @@
 import { api } from './axios.js';
 import { nodes } from './nodes.js';
-import { createCategories } from './utils.js';
+import { createCategories, createMovies } from './utils.js';
 
 export function movieDetail() {
 	getMovieDetail();
@@ -20,6 +20,7 @@ async function getMovieDetail() {
 	nodes.movieDetailScore.textContent = movie.vote_average;
 
 	createCategories(movie.genres, nodes.movieDetailCategoriesList);
+	getRelatedMovies(id);
 }
 
 function renderUI() {
@@ -34,4 +35,11 @@ function renderUI() {
 	nodes.categoriesPreviewSection.classList.add('inactive');
 	nodes.genericSection.classList.add('inactive');
 	nodes.movieDetailSection.classList.remove('inactive');
+}
+
+async function getRelatedMovies(id) {
+	const { data } = await api(`/movie/${id}/recommendations`);
+	const relatedMovies = data.results;
+
+	createMovies(relatedMovies, nodes.relatedMoviesContainer);
 }
